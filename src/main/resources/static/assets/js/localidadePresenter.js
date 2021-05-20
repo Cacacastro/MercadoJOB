@@ -86,7 +86,7 @@ function alterarLocalidade(id)
 function limparFormLocalidade()
 {
     var ldados = document.getElementById("ldados");
-    //fdados.reset();
+    //ldados.reset();
     ldados.id.value=0;
     ldados.cidade.value="";
     ldados.estado.value="";

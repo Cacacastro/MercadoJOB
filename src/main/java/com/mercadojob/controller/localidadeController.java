@@ -68,7 +68,7 @@ public class localidadeController {
       return new ResponseEntity<>(mappessoas.values(),HttpStatus.OK);		
     }
     
-    @RequestMapping(value = "/api/localidade/cadastrar", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/localidades/cadastrar", method = RequestMethod.POST)
     public ResponseEntity<Object> cadPessoa(@RequestBody localidade pessoa) 
     { 
       localidadeDAL dal = new localidadeDAL();
