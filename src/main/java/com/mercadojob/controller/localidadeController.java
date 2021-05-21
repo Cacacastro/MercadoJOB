@@ -42,13 +42,11 @@ public class localidadeController {
     
     @RequestMapping(value="/api/localidades/buscar")	
     public ResponseEntity <Object> buscar(@RequestParam(value="id") int id)
-    {   localidade c=null;
-
+    {
+    	localidade l = null;
     	localidadeDAL dal = new localidadeDAL();
-        for (localidade pe : dal.getLocalidades("", false))
-             if (pe.getId()==id) c=pe;
-
-        return new ResponseEntity<>(c,HttpStatus.OK);	
+    	l = dal.getLocalidade(id);
+        return new ResponseEntity<>(l,HttpStatus.OK);	
     }
 
     
@@ -78,12 +76,7 @@ public class localidadeController {
          dal.salvar(l);
          retorno = "Gravado com sucesso!";
       }
-      else  //alteração
-      {  /*int i=0;
-         retorno="Alterado com sucesso";
-         while(dal.getLocalidade(i).getId()!=pessoa.getId()) i++;
-         if(i<dal.getLocalidades("", false).size()) dal.alterar(pessoa);
-         else retorno="Erro ao alterar";*/
+      else  {
     	  dal.alterar(l);
     	  retorno = "Alterado com sucesso";
       }
