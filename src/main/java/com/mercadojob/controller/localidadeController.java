@@ -24,7 +24,7 @@ public class localidadeController {
 	{
 		localidadeDAL dal = new localidadeDAL();
 		Map<String,localidade> mappessoas = new HashMap<>();
-		List<localidade> todos = dal.getLocalidades("", false);
+		List<localidade> todos = dal.getLocalidades("", true);
 		for(localidade l : todos)
 		   mappessoas.put(""+l.getId(), l);
 		return new ResponseEntity<>(mappessoas.values(),HttpStatus.OK);	

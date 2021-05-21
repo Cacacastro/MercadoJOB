@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="assets/js/categoriaPresenter.js"></script>  
     <script type="text/javascript" src="assets/js/localidadePresenter.js"></script>
+    <script type="text/javascript" src="assets/js/usuarioPresenter.js"></script>
  	<script type="text/javascript" src="assets/js/functions.js"></script>
     <title>Minha Conta - MercadoJob</title>  
 
@@ -145,7 +146,7 @@
 						       	<div class="">
 								  <input type="search" placeholder="Pesquisar.." class="form-control form-control-sm">
 								</div>
-								<script>pesquisar();</script>
+								
 						        <table class="table" id="table-categorias">
 		                            <thead>
 		                              <tr>
@@ -217,7 +218,21 @@
                         
                     </div>
                      <div id="users" class="inner-box my-resume" style="display: none;">
-                        <span>GERENCIAMENTO DE USUÁRIOS</span>
+                        <table class="table" id="table-usuarios">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Admin</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Telefone</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody id="body-usuarios">
+                              
+                            </tbody>
+                      	</table>
                     </div>
                  </div>
               </div>
@@ -271,7 +286,9 @@
         function logout() {
             console.log("logout");
         }
-        pesquisarLocalidades();
+        setTimeout(pesquisarUsuarios, 0);
+        setTimeout(pesquisarLocalidades, 1000);
+       	setTimeout(pesquisar, 2000);
     </script>
   </body>
   

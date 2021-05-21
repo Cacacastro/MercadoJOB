@@ -101,7 +101,7 @@ public class usuarioDAL {
 	
 	public ArrayList <usuario> getUsuarios(String filtro, boolean flag)
     {   ArrayList <usuario> lista=new ArrayList();
-        String sql="select * from usuarios";
+        String sql="select * from usuario";
         if (!filtro.isEmpty())
             sql+=" where "+filtro;
         if(!flag)
