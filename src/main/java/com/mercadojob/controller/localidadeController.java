@@ -69,20 +69,23 @@ public class localidadeController {
     }
     
     @RequestMapping(value = "/api/localidades/cadastrar", method = RequestMethod.POST)
-    public ResponseEntity<Object> cadPessoa(@RequestBody localidade pessoa) 
+    public ResponseEntity<Object> cadPessoa(@RequestBody localidade l) 
     { 
       localidadeDAL dal = new localidadeDAL();
-      String retorno="Gravado com sucesso";
-      if (pessoa.getId()==0) 
+      String retorno="Erro!";
+      if (l.getId()==0) 
       {
-         dal.salvar(pessoa);
+         dal.salvar(l);
+         retorno = "Gravado com sucesso!";
       }
       else  //alteração
-      {  int i=0;
+      {  /*int i=0;
          retorno="Alterado com sucesso";
          while(dal.getLocalidade(i).getId()!=pessoa.getId()) i++;
          if(i<dal.getLocalidades("", false).size()) dal.alterar(pessoa);
-         else retorno="Erro ao alterar";
+         else retorno="Erro ao alterar";*/
+    	  dal.alterar(l);
+    	  retorno = "Alterado com sucesso";
       }
       return new ResponseEntity<>(retorno,HttpStatus.CREATED);
     }

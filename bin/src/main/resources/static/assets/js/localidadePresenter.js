@@ -59,22 +59,15 @@ function gravarLocalidade()
         return response.text(); })
     .then(function (text) {
         // result recebe a resposta do módulo dinâmico
-        //limparFormLocalidade();
-        limparFormulario("ldados");
+        limparFormLocalidade();
         pesquisarLocalidades();
-        
-        var divm = document.getElementById("mensagem-localidades");
-        divm.innerHTML= "Gravado com sucesso";
-        divm.style.display="block";
-        setTimeout(apagarMensagem(divm), 2000); 
     }).catch(function (error) {
         console.error(error);
     });
 }
 
 function alterarLocalidade(id)
-{   
-	var ldados = document.getElementById("ldados");
+{   var ldados = document.getElementById("ldados");
     fetch("/api/localidades/buscar?id="+id, {method: 'GET'})
     .then(function (response) {
         return response.text();})
@@ -99,9 +92,4 @@ function limparFormLocalidade()
     ldados.estado.value="";
     ldados.uf.value="";
     //document.getElementById("mensagem").innerHTML="";
-}
-
-function teste(a)
-{
-	console.log(a);
 }

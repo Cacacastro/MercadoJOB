@@ -5,5 +5,6 @@ function apagarMensagem(div)
 
 function limparFormulario(id)
 {
-	document.getElementById(id).reset();
+	id = "'#"+ id + "'";
+	$(id)[0].reset();
 }

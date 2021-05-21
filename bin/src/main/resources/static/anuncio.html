@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+
+    
+    <title>Anuncie Aqui - MercadoJob</title>  
+
+	<link rel="shortcut icon" href="assets/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">    
+    <link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css" type="text/css">  
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" type="text/css">  
+    
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css" type="text/css"> 
+    <link rel="stylesheet" href="assets/fonts/themify-icons.css"> 
+
+    <!-- Slicknav js -->
+    <link rel="stylesheet" href="assets/css/slicknav.css" type="text/css">
+
+    <!---->
+    <link rel="stylesheet" href="assets/css/main.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="assets/css/colors/red.css" media="screen" />
+  </head>
+
+  <body>  
+      <div class="header">    
+        <div class="logo-menu">
+          <nav class="navbar navbar-default main-navigation" role="navigation" data-spy="affix" data-offset-top="50">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo" href="index.html"><img src="assets/img/logo.png" alt=""></a>
+              </div>
+
+              <div class="collapse navbar-collapse" id="navbar">              
+                <ul class="nav navbar-nav">
+                  <li>
+                    <a href="index.html">
+                    Ínicio
+                    </a>
+                    
+                  </li>
+                 <!-- <li>
+                    <a  href="about.html">
+                    Sobre
+                    </a>
+                   
+                  </li>-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right float-right">
+                  <li class="left"><a href="anuncio.html"><i class="ti-pencil-alt"></i> Anuncie Aqui</a></li>
+                  <li class="right"><a href="entrar.html"><i class="ti-lock"></i>  Entrar</a></li>
+                </ul>
+              </div>
+            </div>
+            <ul class="wpb-mobile-menu">
+              <li>
+                <a href="index.html">Home</a>
+                                    
+              </li>
+              <li>
+                <a class="active" href="about.html">Pages</a>
+              </li>
+              
+              <li class="btn-m"><a href="anunciar"><i class="ti-pencil-alt"></i> Anuncie Aqui</a></li>
+              <li class="btn-m"><a href="entrar.html"><i class="ti-lock"></i>  Entrar</a></li>          
+            </ul>
+          </nav>
+        </div>
+      </div>
+ 
+    <!-- Page Header Start -->
+      <div class="page-header" style="background: url(assets/img/banner1.jpg);">
+        <div class="container">
+          <div class="row">         
+            <div class="col-md-12">
+              <div class="breadcrumb-wrapper">
+                <h2 class="product-title">Anuncie Aqui</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Page Header End -->        
+
+     <div class="policy section">
+        <div class="container">
+            <div class="row">
+                <div class="post-box">
+                    <div class="text-box">
+                        <form role="form" >
+                              <div class="form-group">
+                                    <label>Categotia:</label>
+                                    <select name="categoria" id="categoria" class="form-control">
+                                                <option value="1" selected="selected">Finanças</option>
+                                                <option value="2">Limpeza</option>
+                                    </select>
+                              </div>
+                              <div class="form-group">
+                                  <div class="input-icon">
+                                    <label>Localidade:</label>
+                                    <select name="localidade" id="localidade" class="form-control">
+                                                <option value="1" selected="selected">Presidente Prudente</option>
+                                                <option value="2">São Paulo</option>
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label>Título do anúncio:</label>
+                                 <div class="input-icon">
+                                     <input type="text" id="nome" class="form-control" name="nome"  required="">
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                  <label>Descrição curta:</label>
+                                 <div class="input-icon">
+                                     <input type="text" id="descricao" class="form-control" name="descricao" required="">
+                                 </div>
+                              </div>
+                            <div class="form-group">
+                                <label>Preço:</label>
+                                 <div class="input-icon">
+                                     <input type="number" id="valor" class="form-control" name="valor"  required="">
+                                 </div>
+                              </div>
+                                <div class="form-group">
+                                    <label>Descrição longa:</label>
+                                    <div class="input-icon">
+                                        <textarea class="form-control" id="long_descricao" rows="15"></textarea>
+                                    </div>
+                                </div>
+                              
+                              <div class="form-group">
+                                  <label for="foto1">Foto 1 *</label>
+                                 <div class="input-icon">
+                                    <input type="file" class="form-control-file" id="foto1" name="foto1" accept="image/png, image/jpeg"/>
+                                 </div>
+                              </div>
+                               <div class="form-group">
+                                  <label for="foto2">Foto 2 (Opcional)</label>
+                                 <div class="input-icon">
+                                    <input type="file" class="form-control-file" id="foto2" name="foto2" accept="image/png, image/jpeg"/>
+                                 </div>
+                              </div>
+                               <div class="form-group">
+                                  <label for="foto3">Foto 3 (Opcional)</label>
+                                 <div class="input-icon">
+                                    <input type="file" class="form-control-file" id="foto3" name="foto3" accept="image/png, image/jpeg"/>
+                                 </div>
+                              </div>
+                            
+                              <button style="width: 100%;border-radius: 5px;" class="btn btn-common log-btn">Anunciar</button>
+                           </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+      <!-- Main container End -->  
+
+   
+
+    <footer>
+    	
+    	
+    	<div id="copyright">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-12">
+              <div class="site-info text-center">
+                <p> &copy; Copyright MercadoJob. Todos os direitos reservados.</p>
+              </div>   
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+
+    </footer>
+    
+    <a href="#" class="back-to-top">
+      <i class="ti-arrow-up"></i>
+    </a>
+
+    
+        
+    <!--  JS  -->
+    <script type="text/javascript" src="assets/js/jquery-min.js"></script>      
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.slicknav.js"></script>    
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
+    
+  </body>
+</html>

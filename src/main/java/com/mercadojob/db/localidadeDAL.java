@@ -25,7 +25,9 @@ public class localidadeDAL {
 	public boolean alterar (localidade l)
     {   
 		String sql = "update localidade set loc_cidade='#1', loc_estado='#2', loc_uf='#3' where loc_id = " + l.getId();
-        //String sql = "update localidades set loc_cidade='"+ l.getCidade()+"' loc_estaodo='" + l.getEstado() + "' loc_uf='" + l.getUF() + "' where loc_id="+l.getId();
+		sql=sql.replace("#1", l.getCidade());
+        sql=sql.replace("#2", l.getEstado());
+        sql = sql.replace("#3", l.getUF());
         Conexao con=new Conexao();
         boolean flag=con.manipular(sql);
         con.fecharConexao();
