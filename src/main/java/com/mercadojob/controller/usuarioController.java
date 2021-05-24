@@ -70,7 +70,7 @@ public class usuarioController {
       return new ResponseEntity<>(mappessoas.values(),HttpStatus.OK);		
     }
     
-    @RequestMapping(value="/api/usuario/registrar", method = RequestMethod.POST)
+    @RequestMapping(value="/api/usuarios/cadastrar", method = RequestMethod.POST)
     public ResponseEntity<Object> registrar(@RequestBody usuario u) 
     { 
       usuarioDAL dal = new usuarioDAL();

@@ -233,6 +233,27 @@
                               
                             </tbody>
                       	</table>
+                      	</hr></br>
+                      	<h4  style="text-align: center">Cadastrar Usuários</h4>
+                        <div style="width:100%; margin: 0 auto; text-align: left">
+						            
+						            <form method="post" id="udados">
+						                <p>Id<br><input type="text" name="id" id="id" value="0" readonly="readonly" size="90"/></p>
+						                <label>Administrador:</label>
+                                         <p>
+                                             <input type="radio" name="adm"  value="true"> Sim
+                                             <input type="radio" name="adm" value="false"> Não
+                                         </p>
+						                <p>Nome<br><input type="text" name="nome" id="nome" value="" size="90"/></p>
+						                <p>Email<br><input type="text" name="email" id="email" value="" size="90"/></p>
+						                <p>Senha<br><input type="password" name="senha" id="senha" value="" size="90"/></p>
+						                <p>Telefone<br><input type="text" name="telefone" id="telefone" value="" size="90"/></p>
+						            </form>
+						</div>
+						<div style="width:100%; margin: 0 auto; text-align: center">
+						            <button onclick="gravarUsuario()">Gravar</button>
+						            <br>			       
+     					</div>
                     </div>
                  </div>
               </div>

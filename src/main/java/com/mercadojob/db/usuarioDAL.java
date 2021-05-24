@@ -10,7 +10,7 @@ import com.mercadojob.entity.usuario;
 public class usuarioDAL {
 	public boolean salvar (usuario u)
     {
-		String sql="insert into usuario values (default, #1,'#2', '#3', '#4', '#5')";
+		String sql="insert into usuario values (default, '#1','#2', '#3', '#4', '#5')";
         sql=sql.replace("#1", ""+u.isAdm());
         sql=sql.replace("#2", u.getNome());
         sql = sql.replace("#3", u.getEmail());
