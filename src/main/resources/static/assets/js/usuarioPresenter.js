@@ -72,7 +72,7 @@ function gravarUsuario()
     //event.preventDefault();
     var udados = document.getElementById("udados");
     var jsontext = JSON.stringify(Object.fromEntries(new FormData(udados)));
-    fetch("/api/usuarios/cadastrar", {headers: {'Accept': 'application/json','Content-Type': 'application/json'},
+    fetch("/api/usuarios/registrar", {headers: {'Accept': 'application/json','Content-Type': 'application/json'},
                         method: 'POST', 
                         body: jsontext})
     .then(function (response) {
@@ -91,6 +91,7 @@ function gravarUsuario()
         console.error(error);
     });
 }
+
 
 function limparFormUsuario()
 {

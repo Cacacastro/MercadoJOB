@@ -30,7 +30,7 @@ function registrar()
     if(dados.senha.value != dados.senhaConfirma.value)
     	console.log("Confirmação de senha inválida")
     else {
-		fetch("/api/usuario/registrar", {headers: {'Accept': 'application/json','Content-Type': 'application/json'},
+		fetch("/api/usuarios/registrar", {headers: {'Accept': 'application/json','Content-Type': 'application/json'},
                         method: 'POST', 
                         body: jsontext})
     .then(function (response) {
