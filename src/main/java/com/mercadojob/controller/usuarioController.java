@@ -101,10 +101,12 @@ public class usuarioController {
     	{
     		if(user.getEmail().equals(u.getEmail()) && user.getSenha().equals(u.getSenha()))
     		{
-    			if(user.isAdm())
+    			user.setSenha("");
+    			return new ResponseEntity<>(user,HttpStatus.CREATED);
+    			/*if(user.isAdm())
     				retorno = "adm";
     			else
-    				retorno = "logado";
+    				retorno = "logado";*/
     		}
     		else
     			retorno = "email ou senha incorretos";

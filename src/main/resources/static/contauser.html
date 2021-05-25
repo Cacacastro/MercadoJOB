@@ -25,6 +25,12 @@
     <link rel="stylesheet" href="assets/css/main.css" type="text/css">
     <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="assets/css/colors/red.css" media="screen" />
+    <script src="assets/js/functions.js"></script>
+    <script>
+    	verificaLogado();
+    	var nome = JSON.parse(sessionStorage.getItem('user')).nome;
+    </script>
+    
   </head>
 
   <body>  
@@ -59,7 +65,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right float-right">
                   <li class="left"><a href="anuncio.html"><i class="ti-pencil-alt"></i> Anuncie Aqui</a></li>
-                  <li class="right"><a href="entrar.html"><i class="ti-lock"></i>  Sair</a></li>
+                  <li class="right"><a href="#" onclick="sair();"><i class="ti-lock"></i>  Sair</a></li>
                 </ul>
               </div>
             </div>
@@ -105,7 +111,7 @@
                  <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="right-sideabr">
                        <div class="inner-box">
-                          <h4>Bem Vindo, Usuário</h4>
+                          <h4>Bem Vindo, <script>document.write(nome);</script></h4>
                           <ul class="lest item">
                              <li><a class="link active" href="#" onclick="openTab(event, 'anuncios');">Anúncios</a></li>
                           </ul>
