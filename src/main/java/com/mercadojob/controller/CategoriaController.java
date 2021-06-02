@@ -12,29 +12,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mercadojob.db.categoriaDAL;
-import com.mercadojob.entity.categoria;
+import com.mercadojob.db.CategoriaDAL;
+import com.mercadojob.entity.Categoria;
 
 @RestController
-public class categoriaController {
+public class CategoriaController {
 
 	@RequestMapping(value="/listarCat")	
 	public ResponseEntity <Object> listarTodos()
 	{
-		categoriaDAL dal = new categoriaDAL();
-		Map<String,categoria> mappessoas = new HashMap<>();
-		List<categoria> todos = dal.getCategorias("", false);
-		for(categoria c : todos)
+		CategoriaDAL dal = new CategoriaDAL();
+		Map<String,Categoria> mappessoas = new HashMap<>();
+		List<Categoria> todos = dal.getCategorias("", false);
+		for(Categoria c : todos)
 		   mappessoas.put(""+c.getId(), c);
 		return new ResponseEntity<>(mappessoas.values(),HttpStatus.OK);		
 	}
     
     @RequestMapping(value="/buscarCat")	
     public ResponseEntity <Object> buscar(@RequestParam(value="id") int id)
-    {   categoria c=null;
+    {   Categoria c=null;
 
-    	categoriaDAL dal = new categoriaDAL();
-        for (categoria pe : dal.getCategorias("", false))
+    	CategoriaDAL dal = new CategoriaDAL();
+        for (Categoria pe : dal.getCategorias("", false))
              if (pe.getId()==id) c=pe;
 
         return new ResponseEntity<>(c,HttpStatus.OK);	
@@ -43,9 +43,9 @@ public class categoriaController {
     @RequestMapping(value="/apagarCat")	
     public ResponseEntity <Object> apagar(@RequestParam(value="id") int id)
     {
-    	categoriaDAL dal = new categoriaDAL();
+    	CategoriaDAL dal = new CategoriaDAL();
     	String retorno="problemas ao apagar";
-    	for (categoria pe : dal.getCategorias("", false))
+    	for (Categoria pe : dal.getCategorias("", false))
     	  if (pe.getId()==id){ 
                 	dal.apagar(pe.getId()); 
                 	retorno="Excluído com sucesso";
@@ -57,12 +57,12 @@ public class categoriaController {
     public ResponseEntity <Object> listarFiltro(@RequestParam(value="chave") String  
                                   chave, @RequestParam(required=false) String filtro)
     {
-      categoriaDAL dal = new categoriaDAL();
-      Map<String,categoria> mappessoas = new HashMap<>();
+      CategoriaDAL dal = new CategoriaDAL();
+      Map<String,Categoria> mappessoas = new HashMap<>();
       if(chave.equals("MINHACHAVEVALIDA"))
       {
-         List<categoria> todos = dal.getCategorias("", false);
-         for(categoria p : todos)
+         List<Categoria> todos = dal.getCategorias("", false);
+         for(Categoria p : todos)
          if(filtro==null || p.getNome().toUpperCase().contains(filtro.toUpperCase()))
               mappessoas.put(""+p.getId(), p);
       }
@@ -70,9 +70,9 @@ public class categoriaController {
     }
     
     @RequestMapping(value = "/cadastrarCat", method = RequestMethod.POST)
-    public ResponseEntity<Object> cadPessoa(@RequestBody categoria pessoa) 
+    public ResponseEntity<Object> cadPessoa(@RequestBody Categoria pessoa) 
     { 
-      categoriaDAL dal = new categoriaDAL();
+      CategoriaDAL dal = new CategoriaDAL();
       String retorno="Gravado com sucesso";
       if (pessoa.getId()==0) 
       {

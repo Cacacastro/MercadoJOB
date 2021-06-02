@@ -1,18 +1,18 @@
 package com.mercadojob.entity;
 
-public class anuncio {
+public class Anuncio {
     private int id;
-    private categoria cat_id;
-    private usuario user_id;
-    private localidade loc_id;
+    private Categoria categoria;
+    private Usuario usuario;
+    private Localidade localidade;
     private double valor;
     private String nome,descCurta,descLonga,foto1,foto2,foto3;
-	public anuncio(int id, categoria cat_id, usuario user_id, localidade loc_id, double valor, String nome,
-			String descCurta, String descLonga, String foto1, String foto2, String foto3) {
+	public Anuncio(int id, Categoria categoria, Usuario usuario, Localidade localidade, String nome,
+			String descCurta, double valor, String descLonga, String foto1, String foto2, String foto3) {
 		this.id = id;
-		this.cat_id = cat_id;
-		this.user_id = user_id;
-		this.loc_id = loc_id;
+		this.categoria = categoria;
+		this.usuario = usuario;
+		this.localidade = localidade;
 		this.valor = valor;
 		this.nome = nome;
 		this.descCurta = descCurta;
@@ -21,7 +21,7 @@ public class anuncio {
 		this.foto2 = foto2;
 		this.foto3 = foto3;
 	}
-	public anuncio() {
+	public Anuncio() {
 	}
 	public int getId() {
 		return id;
@@ -29,23 +29,23 @@ public class anuncio {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public categoria getCat_id() {
-		return cat_id;
+	public Categoria getCategoria() {
+		return categoria;
 	}
-	public void setCat_id(categoria cat_id) {
-		this.cat_id = cat_id;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
-	public usuario getUser_id() {
-		return user_id;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setUser_id(usuario user_id) {
-		this.user_id = user_id;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-	public localidade getLoc_id() {
-		return loc_id;
+	public Localidade getLocalidade() {
+		return localidade;
 	}
-	public void setLoc_id(localidade loc_id) {
-		this.loc_id = loc_id;
+	public void setLocalidade(Localidade localidade) {
+		this.localidade = localidade;
 	}
 	public double getValor() {
 		return valor;

@@ -1,13 +1,13 @@
 package com.mercadojob.entity;
 
-public class categoria {
+public class Categoria {
     private int id;
     private String nome;
     
-	public categoria() {
+	public Categoria() {
 	}
 
-	public categoria(int id, String nome) {
+	public Categoria(int id, String nome) {
 		this.id = id;
 		this.nome = nome;
 	}

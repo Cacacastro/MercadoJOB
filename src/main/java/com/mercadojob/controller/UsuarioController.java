@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mercadojob.db.localidadeDAL;
-import com.mercadojob.db.usuarioDAL;
-import com.mercadojob.entity.localidade;
-import com.mercadojob.entity.usuario;
+import com.mercadojob.db.LocalidadeDAL;
+import com.mercadojob.db.UsuarioDAL;
+import com.mercadojob.entity.Localidade;
+import com.mercadojob.entity.Usuario;
 
 @RestController
-public class usuarioController {
+public class UsuarioController {
 	@RequestMapping(value="/api/usuarios/listar")	
 	public ResponseEntity <Object> listarTodos()
 	{
-		usuarioDAL dal = new usuarioDAL();
-		Map<String,usuario> mappessoas = new HashMap<>();
-		List<usuario> todos = dal.getUsuarios("", false);
-		for(usuario u : todos) {
+		UsuarioDAL dal = new UsuarioDAL();
+		Map<String,Usuario> mappessoas = new HashMap<>();
+		List<Usuario> todos = dal.getUsuarios("", false);
+		for(Usuario u : todos) {
 			u.setSenha("");
 		   mappessoas.put(""+u.getId(), u);
 		}
@@ -36,7 +36,7 @@ public class usuarioController {
 	public ResponseEntity <Object> apagar(@RequestParam(value="id") int id)
 	{
 		String retorno="Erro ao apagar";
-		usuarioDAL dal = new usuarioDAL();
+		UsuarioDAL dal = new UsuarioDAL();
 		if(dal.apagar(id))
 			retorno="Apagado com sucesso!";
 		return new ResponseEntity<>(retorno,HttpStatus.OK); 
@@ -45,9 +45,9 @@ public class usuarioController {
     
     @RequestMapping(value="/api/usuarios/buscar")	
     public ResponseEntity <Object> buscar(@RequestParam(value="id") int id)
-    {   usuario u = null;
+    {   Usuario u = null;
 
-    	usuarioDAL dal = new usuarioDAL();
+    	UsuarioDAL dal = new UsuarioDAL();
     	u = dal.getUsuario(id);
 
         return new ResponseEntity<>(u,HttpStatus.OK);	
@@ -58,12 +58,12 @@ public class usuarioController {
     public ResponseEntity <Object> listarFiltro(@RequestParam(value="chave") String  
                                   chave, @RequestParam(required=false) String filtro)
     {
-      localidadeDAL dal = new localidadeDAL();
-      Map<String,localidade> mappessoas = new HashMap<>();
+      LocalidadeDAL dal = new LocalidadeDAL();
+      Map<String,Localidade> mappessoas = new HashMap<>();
       if(chave.equals("MINHACHAVEVALIDA"))
       {
-         List<localidade> todos = dal.getLocalidades("", false);
-         for(localidade p : todos)
+         List<Localidade> todos = dal.getLocalidades("", false);
+         for(Localidade p : todos)
          if(filtro==null || p.getCidade().toUpperCase().contains(filtro.toUpperCase()))
               mappessoas.put(""+p.getId(), p);
       }
@@ -71,9 +71,9 @@ public class usuarioController {
     }
     
     @RequestMapping(value="/api/usuarios/registrar", method = RequestMethod.POST)
-    public ResponseEntity<Object> registrar(@RequestBody usuario u) 
+    public ResponseEntity<Object> registrar(@RequestBody Usuario u) 
     { 
-      usuarioDAL dal = new usuarioDAL();
+      UsuarioDAL dal = new UsuarioDAL();
       String retorno="Erro!";
       if (u.getId()==0) 
       {
@@ -88,12 +88,12 @@ public class usuarioController {
     }
     
     @RequestMapping(value="/api/usuario/entrar")
-    public ResponseEntity<Object> entrar(@RequestBody usuario u)
+    public ResponseEntity<Object> entrar(@RequestBody Usuario u)
     {
     	String retorno = "";
     	
-    	usuario user = null;
-    	usuarioDAL dal = new usuarioDAL();
+    	Usuario user = null;
+    	UsuarioDAL dal = new UsuarioDAL();
     	
     	user = dal.getUsuario(u.getEmail());
     	
@@ -103,10 +103,6 @@ public class usuarioController {
     		{
     			user.setSenha("");
     			return new ResponseEntity<>(user,HttpStatus.CREATED);
-    			/*if(user.isAdm())
-    				retorno = "adm";
-    			else
-    				retorno = "logado";*/
     		}
     		else
     			retorno = "email ou senha incorretos";

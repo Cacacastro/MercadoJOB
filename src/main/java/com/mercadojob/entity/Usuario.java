@@ -1,14 +1,14 @@
 package com.mercadojob.entity;
 
-public class usuario{
+public class Usuario{
 	private int id;
 	private boolean adm;
 	private String nome,email,senha,telefone;
 	
-	public usuario() {
+	public Usuario() {
 	}
 
-	public usuario(int id, boolean adm, String nome, String email, String senha, String telefone) {
+	public Usuario(int id, boolean adm, String nome, String email, String senha, String telefone) {
 		this.id = id;
 		this.adm = adm;
 		this.nome = nome;

@@ -1,13 +1,13 @@
 package com.mercadojob.entity;
 
-public class localidade{
+public class Localidade{
 	private int id;
 	private String cidade,estado,UF;
 	
-	public localidade() {
+	public Localidade() {
 	}
 
-	public localidade(int id, String cidade, String estado, String uF) {
+	public Localidade(int id, String cidade, String estado, String uF) {
 		this.id = id;
 		this.cidade = cidade;
 		this.estado = estado;

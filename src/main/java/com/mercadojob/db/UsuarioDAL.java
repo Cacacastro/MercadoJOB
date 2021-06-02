@@ -5,10 +5,10 @@ import com.mercadojob.util.Conexao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mercadojob.entity.usuario;
+import com.mercadojob.entity.Usuario;
 
-public class usuarioDAL {
-	public boolean salvar (usuario u)
+public class UsuarioDAL {
+	public boolean salvar (Usuario u)
     {
 		String sql="insert into usuario values (default, '#1','#2', '#3', '#4', '#5')";
         sql=sql.replace("#1", ""+u.isAdm());
@@ -24,7 +24,7 @@ public class usuarioDAL {
     }
 	
 	
-	public boolean alterar (usuario u)
+	public boolean alterar (Usuario u)
     {   
 		String sql = "update usuario set user_adm='#1', user_nome='#2', user_email='#3', user_senha='#4', user_telefone='#5'  where user_id = " + u.getId();
 		sql=sql.replace("#1", ""+u.isAdm());
@@ -47,8 +47,8 @@ public class usuarioDAL {
     }
 	
 	
-	public usuario getUsuario(int id)
-    {   usuario u = new usuario();
+	public Usuario getUsuario(int id)
+    {   Usuario u = new Usuario();
         String sql="select * from usuario where user_id="+id;
         Conexao con=new Conexao();
         ResultSet rs = con.consultar(sql);
@@ -73,8 +73,8 @@ public class usuarioDAL {
     }
 	
 	
-	public usuario getUsuario(String email)
-    {   usuario u = new usuario();
+	public Usuario getUsuario(String email)
+    {   Usuario u = new Usuario();
         String sql="select * from usuario where user_email='#1'";
         sql = sql.replace("#1", email);
         Conexao con=new Conexao();
@@ -99,8 +99,8 @@ public class usuarioDAL {
         return u;
     }
 	
-	public ArrayList <usuario> getUsuarios(String filtro, boolean flag)
-    {   ArrayList <usuario> lista=new ArrayList();
+	public ArrayList <Usuario> getUsuarios(String filtro, boolean flag)
+    {   ArrayList <Usuario> lista=new ArrayList();
         String sql="select * from usuario";
         if (!filtro.isEmpty())
             sql+=" where "+filtro;
@@ -113,7 +113,7 @@ public class usuarioDAL {
         try
         {
           while(rs.next())
-             lista.add(new usuario(rs.getInt("user_id"), rs.getBoolean("user_adm"), rs.getString("user_nome"), rs.getString("user_email"), rs.getString("user_senha"), rs.getString("user_telefone")));
+             lista.add(new Usuario(rs.getInt("user_id"), rs.getBoolean("user_adm"), rs.getString("user_nome"), rs.getString("user_email"), rs.getString("user_senha"), rs.getString("user_telefone")));
         }
         catch(Exception e){System.out.println(e);}
         con.fecharConexao();

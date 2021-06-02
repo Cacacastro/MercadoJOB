@@ -3,13 +3,13 @@ package com.mercadojob.db;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mercadojob.entity.categoria;
+import com.mercadojob.entity.Categoria;
 import com.mercadojob.util.Conexao;
 
-public class categoriaDAL {
-	public boolean salvar (categoria c)
+public class CategoriaDAL {
+	public boolean salvar (Categoria c)
     {
-        ArrayList <categoria> cat = getCategorias("",true);
+        ArrayList <Categoria> cat = getCategorias("",true);
         int i = cat.get(cat.size()-1).getId()+1;
         String sql="insert into categoria (cat_id,cat_nome) values ('"+i+"', '"
                 +c.getNome()+"')";
@@ -19,7 +19,7 @@ public class categoriaDAL {
         con.fecharConexao();
         return flag;                              
     }
-    public boolean alterar (categoria c)
+    public boolean alterar (Categoria c)
     {   
         String sql = "update categoria set cat_nome='"+c.getNome()+"' where cat_id="+c.getId();
         Conexao con=new Conexao();
@@ -34,8 +34,8 @@ public class categoriaDAL {
         con.fecharConexao();
         return flag;                      
     }
-    public categoria getCategoria(int id)
-    {   categoria t=new categoria();
+    public Categoria getCategoria(int id)
+    {   Categoria t=new Categoria();
         String sql="select * from categoria where cat_id="+id;
         Conexao con=new Conexao();
         ResultSet rs = con.consultar(sql);
@@ -52,8 +52,8 @@ public class categoriaDAL {
         con.fecharConexao();
         return t;
     }
-    public ArrayList <categoria> getCategorias(String filtro,boolean flag)
-    {   ArrayList <categoria> lista= new ArrayList();
+    public ArrayList <Categoria> getCategorias(String filtro,boolean flag)
+    {   ArrayList <Categoria> lista= new ArrayList();
         String sql="select * from categoria";
         if (!filtro.isEmpty())
             sql+=" where "+filtro;
@@ -66,7 +66,7 @@ public class categoriaDAL {
         try
         {
           while(rs.next())
-             lista.add(new categoria(rs.getInt("cat_id"),rs.getString("cat_nome")));
+             lista.add(new Categoria(rs.getInt("cat_id"),rs.getString("cat_nome")));
         }
         catch(Exception e){System.out.println(e);}
         con.fecharConexao();

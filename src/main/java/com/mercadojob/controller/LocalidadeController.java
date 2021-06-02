@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mercadojob.db.localidadeDAL;
-import com.mercadojob.entity.localidade;
+import com.mercadojob.db.LocalidadeDAL;
+import com.mercadojob.entity.Localidade;
 
 
 
 @RestController
-public class localidadeController {
+public class LocalidadeController {
 	@RequestMapping(value="/api/localidades/listar")	
 	public ResponseEntity <Object> listarTodos()
 	{
-		localidadeDAL dal = new localidadeDAL();
-		Map<String,localidade> mappessoas = new HashMap<>();
-		List<localidade> todos = dal.getLocalidades("", true);
-		for(localidade l : todos)
+		LocalidadeDAL dal = new LocalidadeDAL();
+		Map<String,Localidade> mappessoas = new HashMap<>();
+		List<Localidade> todos = dal.getLocalidades("", true);
+		for(Localidade l : todos)
 		   mappessoas.put(""+l.getId(), l);
 		return new ResponseEntity<>(mappessoas.values(),HttpStatus.OK);	
 	}
@@ -33,7 +33,7 @@ public class localidadeController {
 	public ResponseEntity <Object> apagar(@RequestParam(value="id") int id)
 	{
 		String retorno="Erro ao apagar";
-		localidadeDAL dal = new localidadeDAL();
+		LocalidadeDAL dal = new LocalidadeDAL();
 		if(dal.apagar(id))
 			retorno="Apagado com sucesso!";
 		return new ResponseEntity<>(retorno,HttpStatus.OK); 
@@ -43,8 +43,8 @@ public class localidadeController {
     @RequestMapping(value="/api/localidades/buscar")	
     public ResponseEntity <Object> buscar(@RequestParam(value="id") int id)
     {
-    	localidade l = null;
-    	localidadeDAL dal = new localidadeDAL();
+    	Localidade l = null;
+    	LocalidadeDAL dal = new LocalidadeDAL();
     	l = dal.getLocalidade(id);
         return new ResponseEntity<>(l,HttpStatus.OK);	
     }
@@ -54,12 +54,12 @@ public class localidadeController {
     public ResponseEntity <Object> listarFiltro(@RequestParam(value="chave") String  
                                   chave, @RequestParam(required=false) String filtro)
     {
-      localidadeDAL dal = new localidadeDAL();
-      Map<String,localidade> mappessoas = new HashMap<>();
+      LocalidadeDAL dal = new LocalidadeDAL();
+      Map<String,Localidade> mappessoas = new HashMap<>();
       if(chave.equals("MINHACHAVEVALIDA"))
       {
-         List<localidade> todos = dal.getLocalidades("", false);
-         for(localidade p : todos)
+         List<Localidade> todos = dal.getLocalidades("", false);
+         for(Localidade p : todos)
          if(filtro==null || p.getCidade().toUpperCase().contains(filtro.toUpperCase()))
               mappessoas.put(""+p.getId(), p);
       }
@@ -67,9 +67,9 @@ public class localidadeController {
     }
     
     @RequestMapping(value = "/api/localidades/cadastrar", method = RequestMethod.POST)
-    public ResponseEntity<Object> cadPessoa(@RequestBody localidade l) 
+    public ResponseEntity<Object> cadPessoa(@RequestBody Localidade l) 
     { 
-      localidadeDAL dal = new localidadeDAL();
+      LocalidadeDAL dal = new LocalidadeDAL();
       String retorno="Erro!";
       if (l.getId()==0) 
       {

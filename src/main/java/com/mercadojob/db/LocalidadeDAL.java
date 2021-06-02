@@ -3,12 +3,12 @@ package com.mercadojob.db;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mercadojob.entity.localidade;
+import com.mercadojob.entity.Localidade;
 import com.mercadojob.util.Conexao;
 
-public class localidadeDAL {
+public class LocalidadeDAL {
 	
-	public boolean salvar (localidade l)
+	public boolean salvar (Localidade l)
     {
 		String sql="insert into localidade values (default,'#1','#2', '#3')";
         sql=sql.replace("#1", l.getCidade());
@@ -22,7 +22,7 @@ public class localidadeDAL {
     }
 	
 	
-	public boolean alterar (localidade l)
+	public boolean alterar (Localidade l)
     {   
 		String sql = "update localidade set loc_cidade='#1', loc_estado='#2', loc_uf='#3' where loc_id = " + l.getId();
 		sql=sql.replace("#1", l.getCidade());
@@ -42,8 +42,8 @@ public class localidadeDAL {
         return flag;                      
     }
 	
-	public localidade getLocalidade(int id)
-    {   localidade l = new localidade();
+	public Localidade getLocalidade(int id)
+    {   Localidade l = new Localidade();
         String sql="select * from localidade where loc_id="+id;
         Conexao con=new Conexao();
         ResultSet rs = con.consultar(sql);
@@ -63,8 +63,8 @@ public class localidadeDAL {
         return l;
     }
 	
-	public ArrayList <localidade> getLocalidades(String filtro,boolean flag)
-    {   ArrayList <localidade> lista=new ArrayList();
+	public ArrayList <Localidade> getLocalidades(String filtro,boolean flag)
+    {   ArrayList <Localidade> lista=new ArrayList();
         String sql="select * from localidade";
         if (!filtro.isEmpty())
             sql+=" where "+filtro;
@@ -77,7 +77,7 @@ public class localidadeDAL {
         try
         {
           while(rs.next())
-             lista.add(new localidade(rs.getInt("loc_id"),rs.getString("loc_cidade"), rs.getString("loc_estado"), rs.getString("loc_uf")));
+             lista.add(new Localidade(rs.getInt("loc_id"),rs.getString("loc_cidade"), rs.getString("loc_estado"), rs.getString("loc_uf")));
         }
         catch(Exception e){System.out.println(e);}
         con.fecharConexao();
