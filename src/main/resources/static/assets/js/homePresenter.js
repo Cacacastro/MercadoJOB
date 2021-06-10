@@ -13,7 +13,7 @@ function exibirTodosAnuncios()
                 <a href="#"><img src="${json[i].foto1}" width="100px" height="100px" alt=""></a>
               </div>
               <div class="job-list-content">
-                <h4><a href="#">Web designer</a></h4>
+                <h4><a href="#">${json[i].nome}</a></h4>
                 <div class="descr">
                   <p>${json[i].descCurta}</p>
                   <span>

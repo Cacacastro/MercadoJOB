@@ -120,4 +120,18 @@ public class AnuncioController {
 		return new ResponseEntity<>(mappessoas.values(),HttpStatus.OK);	
 	}
 	
+	@RequestMapping(value="/api/anuncios/listarByCategoria")
+    public ResponseEntity <Object> listarByCategoria(int codCat) 
+    {
+        AnuncioDAL dal = new AnuncioDAL();
+        Map<String,Anuncio> mappessoas = new HashMap<>();
+        List<Anuncio> todos = dal.getAnuncios("cat_id = " + codCat, false);
+        
+        for(Anuncio a : todos) {
+            a.getUsuario().setSenha("");
+            mappessoas.put(""+a.getId(), a);
+        }
+        return new ResponseEntity<>(mappessoas.values(),HttpStatus.OK);    
+    }
+	
 }
