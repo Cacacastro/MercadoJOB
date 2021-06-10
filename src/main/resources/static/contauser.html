@@ -117,7 +117,7 @@
                        <div class="inner-box">
                           <h4>Bem Vindo, <script>document.write(nome);</script></h4>
                           <ul class="lest item">
-                             <li><a class="link active" href="#" onclick="openTab(event, 'anuncios');">Meus Anúncios</a></li>
+                             <li><a class="link active" href="#" onclick="openTab(event, 'anuncios');">Meu Anúncio</a></li>
                              <li><a class="link" href="#" onclick="openTab(event, 'cadastrar');">Novo Anúncio</a></li>
                           </ul>
                           
@@ -127,26 +127,11 @@
                  </div>
                  <div class="col-md-8 col-sm-8 col-xs-12">
                     <div id="anuncios" class="inner-box my-resume">
-                        <table class="table" id="table-anuncios">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Titulo</th>
-                                <th scope="col">Categoria</th>
-                                <th scope="col">Localização</th>
-                                <th scope="col"></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Desenvolvimento WEbsites</td>
-                                <td>Programação</td>
-                                <td>Presidente Prudente</td>
-                                <td></td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        
+                        <div id="meuanuncio">
+                        	<script> mostrarAnuncioUser();</script>
+                        </div>
+                          
  					</div>
  					<div id="cadastrar" class="inner-box my-resume" style="display: none;">
                         <form role="form" id="anuncios-form" method="POST">

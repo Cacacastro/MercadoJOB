@@ -28,19 +28,25 @@ function gravarAnuncio()
    
     if(formData.foto1.name != "")
     {	
-		enviaImagem(formData.foto1, id+"-1.jpg")
+		enviaImagem(formData.foto1, id+"-1.jpg");
 		formData.foto1 = "assets/img/anuncios/"+id+"-1.jpg";	
 	}
+	else
+		formData.foto1 = "";
     if(formData.foto2.name != "")
     {	
-		enviaImagem(formData.foto2, id+"-2.jpg")
+		enviaImagem(formData.foto2, id+"-2.jpg");
 		formData.foto2 = "assets/img/anuncios/"+id+"-2.jpg";	
 	}
+	else
+		formData.foto2 = "";
 	if(formData.foto3.name != "")
     {	
-		enviaImagem(formData.foto3, id+"-3.jpg")
+		enviaImagem(formData.foto3, id+"-3.jpg");
 		formData.foto3 = "assets/img/anuncios/"+id+"-3.jpg";	
 	}
+	else
+		formData.foto3 = "";
     
     var jsontext = JSON.stringify(formData);
    	
@@ -53,9 +59,7 @@ function gravarAnuncio()
     .then(function (response) {
         return response.text(); })
     .then(function (text) {
-        
-        //limparFormulario("anuncios-form");
-         console.log("anuncio cadastrado");
+         console.log(text);
     }).catch(function (error) {
         console.error(error);
     });
@@ -71,8 +75,52 @@ async function enviaImagem(file, nome)
 		};
 	var response = await fetch("/api/anuncios/upload", options);
    	var retorno = await response.text();
-    return await Promise.all(retorno);
+    return retorno;
 }
+
+
+function mostrarAnuncioUser()
+{
+	var formData = new FormData();
+	formData.append("codUser", id);
+	fetch("/api/anuncios/obteranuncio", {method: 'POST', body: formData 
+   		}).then(function (response) {
+        	return response.text();
+   		}).then(function (text) {
+				var json = JSON.parse(text);
+				var str = "";
+				
+				str += "<b>Título do Anúncio: <\/b> " + json.nome;
+				
+				str += "<br/><br/><b>Preço: <\/b>" + json.valor;
+				
+				str += "<br/><br/><b>Descrição Curta: <\/b>" + json.descCurta;
+				
+				str += "<br/><br/><b>Descrição Longa: <\/b>" + json.descLonga;
+				
+				str += "<br/><br/><b>Categoria: <\/b>" + json.categoria.nome;
+				
+				str += "<br/><br/><b>Localização: <\/b>" + json.localidade.cidade + " - " + json.localidade.estado;
+				
+				
+				str += "<br/><br/><b>Imagem 1: <\/b> <img src=\"" + json.foto1 + "\"</img>";
+				 
+				str += "<br/><br/><b>Imagem 2: <\/b> <img src=\"" + json.foto2 + "\"</img>";
+				
+				str += "<br/><br/><b>Imagem 1: <\/b> <img src=\"" + json.foto3 + "\"</img>";
+				
+				document.getElementById("meuanuncio").innerHTML=str;
+				
+				
+				
+				
+				
+ 		}).catch(function (error) {
+        console.error(error);
+    });
+   
+}
+
 
 function selectCategoria()
 {

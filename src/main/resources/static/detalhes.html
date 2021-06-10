@@ -25,6 +25,60 @@
     <link rel="stylesheet" href="assets/css/main.css" type="text/css">
     <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="assets/css/colors/red.css" media="screen" />
+    
+    <script>
+
+		var parseQueryString = function() {
+			var str = window.location.search;
+			var objURL = {};
+			str.replace(
+				new RegExp( "([^?=&]+)(=([^&]*))?", "g" ),
+				function( $0, $1, $2, $3 ){
+					objURL[$1] = $3;
+				}
+				);
+			return objURL;
+		};
+		
+		var params     = parseQueryString();
+		
+		var id_anuncio = params['id'];
+		
+		
+		var formData = new FormData();
+		formData.append("id", id_anuncio);
+		
+		///api/anuncios/buscaranuncio
+		fetch("/api/anuncios/buscar", {method: 'POST', body: formData})
+		    .then(function (response) {
+		        return response.text();})
+		    .then(function (text) {
+		        var json=JSON.parse(text);
+	         	console.log(json);
+		        document.getElementById("titulo").innerHTML = json.nome;
+		        document.getElementById("title").innerHTML = json.nome;
+		        document.getElementById("foto1").src = json.foto1;
+		        document.getElementById("foto2").src = json.foto2;
+		        document.getElementById("foto3").src = json.foto3;
+		        document.getElementById("categoria").innerHTML = " " + json.categoria.nome;
+		        
+		        document.getElementById("localidade").innerHTML = " " + json.localidade.cidade + ", " + json.localidade.uf;
+		        
+		        document.getElementById("email").innerHTML = " " + json.usuario.email;
+		        document.getElementById("telefone").innerHTML = " " + json.usuario.telefone;
+		        
+		       
+		        document.getElementById("desc1").innerHTML = json.descCurta;
+		        document.getElementById("desc2").innerHTML = json.descLonga;
+		        
+		    }).catch(function (error) {
+		        console.error(error);
+		    });
+		
+		
+    
+    </script>
+    
   </head>
 
   <body>  
@@ -85,7 +139,7 @@
           <div class="row">         
             <div class="col-md-12">
               <div class="breadcrumb-wrapper">
-                <h2 class="product-title">Teste</h2>
+                <h2 id="title" class="product-title"></h2>
               </div>
             </div>
           </div>
@@ -108,16 +162,16 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
-      <div class="item active">
-        <img src="https://image.winudf.com/v2/image/Y29tLlRlY2hub0FwcHMuRGFyazI1X3NjcmVlbl8zXzE1MDQzODQzODlfMDY0/screen-3.jpg?fakeurl=1&type=.jpg" alt="Los Angeles" style="width:100%;">
+      <div  class="item active">
+        <img id="foto1" src="" style="width:100%;">
       </div>
 
       <div class="item">
-        <img src="https://wallpaperaccess.com/full/3264380.jpg" alt="Chicago" style="width:100%;">
+        <img id="foto2" src=""  style="width:100%;">
       </div>
     
       <div class="item">
-        <img src="http://cdn26.us1.fansshare.com/photo/darkwallpapers/dark-wolf-free-wallpaper-dark-forest-wallpapers-1865437233.jpg" alt="New york" style="width:100%;">
+        <img id="foto3" src=""  style="width:100%;">
       </div>
     </div>
 
@@ -134,23 +188,22 @@
             </div>
             <div class="col-md-6 col-sm-12">
               <div class="about-content">
-                <h2 class="medium-title">Titulo</h2>
+                <h2 class="medium-title" id="titulo"></h2>
                 <div style="font-size: 14px; color: #999; margin-right: 10px; margin-top: 10px;">
-                    <span><a href="" style="color: #999"><i class="ti-brush"></i>Design</a></span>
-                    <span><i class="ti-location-pin"></i>Presidente Prudente, SP</span>
+                    <span><a href="" style="color: #999"><i class="ti-brush"></i><span id="categoria"></span></a></span>
+                    <span><i class="ti-location-pin"></i><span id="localidade">  <span></span>
                   </div>
                 
                 <p>
                     <div style="font-size: 15px; color: #999; margin-right: 10px; margin-top: 10px;">
-                        <span><i class="ti-email"></i> contato@gustavotec.com</span>
+                        <span><i class="ti-email"></i> <span id="email"></span></span>
                      </div>
                     <div style="font-size: 15px; color: #999; margin-right: 10px; margin-top: 10px;">
-                            <span><i class="ti-phone"></i> (18) 996300657</span>
+                            <span><i class="ti-phone"></i> <span id="telefone"></span></span>
                          </div>
                 </p>
-                <p class="desc">Descrição 1.</p>
-                <p>Descrição 2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est modi, saepe hic esse maxime quasi, sapiente ex debitis quis dolorum unde, neque quibusdam eveniet nobis enim porro repudiandae nesciunt quidem.
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni delectus soluta adipisci beatae ullam quisquam, quia recusandae rem assumenda, praesentium porro sequi eaque doloremque tenetur incidunt officiis explicabo optio perferendis.</p>
+                <p id="desc1" class="desc"></p>
+                <p id="desc2"> </p>
                 
               </div>
             </div>
